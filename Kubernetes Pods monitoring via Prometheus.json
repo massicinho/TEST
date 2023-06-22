@@ -20,7 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 1031998,
   "graphTooltip": 1,
-  "id": 8,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -89,7 +89,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -175,7 +175,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -261,7 +261,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -269,7 +269,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum (rate (container_cpu_usage_seconds_total{namespace=~\"$namespace\",pod=~\"$pod\"}[2m])) / sum (machine_cpu_cores{}) * 100",
+          "expr": "sum (rate (container_cpu_usage_seconds_total{namespace=~\"$namespace\",pod=~\"$pod\"}[2m])) / sum(kube_node_status_allocatable{resource=\"cpu\"}) * 100",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -347,7 +347,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -355,7 +355,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\",pod=~\"$pod\", unit=\"core\",namespace=~\"$namespace\"}) / sum (machine_cpu_cores{}) * 100",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\",pod=~\"$pod\", unit=\"core\",namespace=~\"$namespace\"}) / sum(kube_node_status_allocatable{resource=\"cpu\"}) * 100",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -428,7 +428,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -508,7 +508,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -516,7 +516,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "kube_node_status_allocatable{resource=\"memory\", unit=\"byte\"}",
+          "expr": "sum(kube_node_status_allocatable{resource=\"memory\", unit=\"byte\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -588,7 +588,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -668,7 +668,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -748,7 +748,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -828,7 +828,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -836,7 +836,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum (machine_cpu_cores{})",
+          "expr": "sum(kube_node_status_allocatable{resource=\"cpu\"})",
           "intervalFactor": 2,
           "range": true,
           "refId": "A",
@@ -907,7 +907,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -987,7 +987,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "targets": [
         {
           "datasource": {
@@ -995,7 +995,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum (machine_cpu_cores{})",
+          "expr": "sum(kube_node_status_allocatable{resource=\"cpu\"})",
           "intervalFactor": 2,
           "range": true,
           "refId": "A",
@@ -1049,7 +1049,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1186,7 +1186,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1300,7 +1300,6 @@
       },
       "hiddenSeries": false,
       "id": 1,
-      "isNew": true,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1321,7 +1320,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1416,7 +1415,6 @@
       },
       "hiddenSeries": false,
       "id": 2,
-      "isNew": true,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1437,7 +1435,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.0.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1505,7 +1503,7 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "oai",
           "value": "oai"
         },
@@ -1589,7 +1587,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -1620,6 +1618,6 @@
   "timezone": "browser",
   "title": "Kubernetes Pods monitoring via Prometheus (CPU and Memory)",
   "uid": "P1809F7CD0C75ACF3",
-  "version": 18,
+  "version": 1,
   "weekStart": ""
 }
